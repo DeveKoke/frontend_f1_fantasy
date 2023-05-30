@@ -1,0 +1,9 @@
+#signUp_form, #logIn_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0;
+}
+input{
+    margin-bottom: .7em;
+}

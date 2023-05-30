@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title> F1 Fantasy - Log in </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <body>
+        <header>
+            <!--para versión móvil introducir burguer con nav escondida desde el DOM-->
+            <nav>
+                <ul>  
+                    <div id="userBar">
+                        <!-- meter nombre e img de usuario -->
+                    </div>
+                    <li><a href=></a></li>
+                    <li><a href=></a></li>
+                    <li><a href=></a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <form id="signUp_form">
+                <label for="userId">User name: </label><input type="text" name="userId" placeholder="Your user name" required>
+                <label for="email">Email: </label><input type="email" name="email" placeholder="Your email" required>
+                <label for="password">Password: </label><input type="password" name="password" placeholder="Write a valid password" required>
+                <label for="passRepeat">Repeat your password: </label><input type="text" name="passRepeat" placeholder="Repeat your password" required>
+                <label for="userImg">Pick your user image: </label><input type="file" name="userImg" placeholder="User image" required>
+                <input type="submit" value="Create an account">
+            </form>
+            <form id="logIn_form">
+                <label for="userId">Nombre de usuario: </label> <input type="text" name="userId" placeholder="Your user name" required>
+                <label for="password">Contraseña: </label><input type="password" name="password" placeholder="You password" required>
+                <input type="submit" value="Log in">
+                <p>Don't have an account yet? </p>
+                <p>Sign up for free!</p> <!-- meter un onclick en <p> + función para que muestre form de sign up -->
+            </form>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+    <script src="scripts.js"></script>
+</html>

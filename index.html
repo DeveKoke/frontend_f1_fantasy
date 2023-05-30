@@ -21,19 +21,19 @@
         </header>
         <main>
             <form id="signUp_form">
-                <label for="userId">User name: </label><input type="text" name="userId" placeholder="Your user name" required>
-                <label for="email">Email: </label><input type="email" name="email" placeholder="Your email" required>
-                <label for="password">Password: </label><input type="password" name="password" placeholder="Write a valid password" required>
-                <label for="passRepeat">Repeat your password: </label><input type="text" name="passRepeat" placeholder="Repeat your password" required>
-                <label for="userImg">Pick your user image: </label><input type="file" name="userImg" placeholder="User image" required>
+                <label for="signup-username">User name: </label><input type="text" id="signup-username" name="userId" placeholder="Your user name" required>
+                <label for="signup-email">Email: </label><input type="email" id="signup-email" name="email" placeholder="Your email" required>
+                <label for="signup-pass">Password: </label><input type="password" id="signup-pass" name="password" placeholder="Write a valid password" required>
+                <label for="signup-reppass">Repeat your password: </label><input type="password" id="signup-reppass" name="repPassword" placeholder="Repeat your password" required>
+                <label>Pick your profile picture: </label><input type="file" id="signup-img" name="userImg" placeholder="User image" required>
                 <input type="submit" value="Create an account">
             </form>
             <form id="logIn_form">
-                <label for="userId">Nombre de usuario: </label> <input type="text" name="userId" placeholder="Your user name" required>
-                <label for="password">Contraseña: </label><input type="password" name="password" placeholder="You password" required>
+                <label for="login-username">User name: </label> <input type="text" id="login-username" name="userId" placeholder="Your user name">
+                <label for="login-pass">Password: </label><input type="password" id="login-pass" name="password" placeholder="You password">
                 <input type="submit" value="Log in">
                 <p>Don't have an account yet? </p>
-                <p>Sign up for free!</p> <!-- meter un onclick en <p> + función para que muestre form de sign up -->
+                <button id="signupFreeButton">Sign up for free!</button> 
             </form>
 
         </main>

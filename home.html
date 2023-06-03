@@ -6,13 +6,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
     <body>
-        <header>
+        <header id="headerHome">
             <nav>
-                <ul>
-                    <li><a href=></a></li>
-                    <li><a href=></a></li>
-                    <li><a href=></a></li>
-                </ul>
+                <div id="nav_superior">
+                    <div  id="userBar">
+                        <h4>HOLA USUARIO</h4>
+                        <!-- meter nombre e img de usuario -->
+                    </div>
+                    <img src="assets/menu.png" alt="menu" id="menu_icon">
+
+                    <button id="logOutButton">Log out</button> 
+                </div>
+                <div id="menu">
+                    <ul class="menu_ul">
+                        <li><a href="home.html">TU EQUIPO</a></li>
+                        <li><a href="resultados.html">RESULTADOS</a></li>
+                        <li><a href="liga.html">LIGA</a></li>
+                      </ul>
+                    <!-- meter ancors desde el dom al presionar menu_icon -->
+                </div>
             </nav>
         </header>
         <main>
@@ -26,5 +38,6 @@
             
         </footer>
     </body>
+
     <script src="scripts.js"></script>
 </html>

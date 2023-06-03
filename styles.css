@@ -1,3 +1,48 @@
+
+input{
+    margin-bottom: .7em;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+a{
+    text-decoration: none;
+}
+li{
+margin: 0 3%;
+width: auto;
+}
+#menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#nav_superior{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu_ul {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+#menu_icon {
+    cursor: pointer;
+    width: 2.6em;
+  }
+  
+
+
 #logIn_form{
     display: flex;
     flex-direction: column;
@@ -8,8 +53,5 @@
     display: none;
     flex-direction: column;
     align-items: center;
-    margin: 2em 0;
-}
-input{
-    margin-bottom: .7em;
+    margin: 2em 0;  
 }

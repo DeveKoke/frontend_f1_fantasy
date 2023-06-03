@@ -8,16 +8,13 @@
     <body>
         <header>
             <!--para versión móvil introducir burguer con nav escondida desde el DOM-->
-            <nav>
+            <!-- <nav>
                 <ul>  
-                    <div id="userBar">
-                        <!-- meter nombre e img de usuario -->
-                    </div>
                     <li><a href=></a></li>
                     <li><a href=></a></li>
                     <li><a href=></a></li>
                 </ul>
-            </nav>
+            </nav> -->
         </header>
         <main>
             <form id="signUp_form">
@@ -25,11 +22,10 @@
                 <label for="signup-email">Email: </label><input type="email" id="signup-email" name="email" placeholder="Your email" required>
                 <label for="signup-pass">Password: </label><input type="password" id="signup-pass" name="password" placeholder="Write a valid password" required>
                 <label for="signup-reppass">Repeat your password: </label><input type="password" id="signup-reppass" name="repPassword" placeholder="Repeat your password" required>
-                <label>Pick your profile picture: </label><input type="file" id="signup-img" name="userImg" placeholder="User image" required>
                 <input type="submit" value="Create an account">
             </form>
             <form id="logIn_form">
-                <label for="login-username">User name: </label> <input type="text" id="login-username" name="userId" placeholder="Your user name">
+                <label for="login-userEmail">User email: </label> <input type="email" id="login-userEmail" name="login_userEmail" placeholder="Your user email">
                 <label for="login-pass">Password: </label><input type="password" id="login-pass" name="password" placeholder="You password">
                 <input type="submit" value="Log in">
                 <p>Don't have an account yet? </p>
@@ -41,5 +37,9 @@
             
         </footer>
     </body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
     <script src="scripts.js"></script>
 </html>

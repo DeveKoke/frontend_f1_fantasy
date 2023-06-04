@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles.css">
 </head>
-    <body>
+    <body class="body-home">
         <header id="headerHome">
             <nav>
                 <div id="nav_superior">
@@ -27,17 +27,40 @@
                 </div>
             </nav>
         </header>
-        <main>
-            <section>
-                <article>
+        <main class="main">
+            <section class="" id="carousel-wrapper">
+                <article class="head-race">
+                    <h2>YOUR TEAM</h2>
+                    <h4>select the drivers that will be part of your team in the next race</h4>
+                    <div class="next-race">
+                        <span>Next race</span>
+                        <span>Japanese Grand Prix</span>
+                        <span>24 SEPT</span>
+                    </div>
+                </article>
+                <article class="" >
+                    <!-- cards from DOM - JS -->
 
                 </article> 
+                <div class="car-but-wrap">
+                    <button class="carousel-buttons" id="btn-left"> < </button>
+                    <button class="carousel-buttons">SELECT DRIVER</button>
+                    <button class="carousel-buttons" id="btn-right"> > </button>
+                </div>
+            </section>
+            <section class="sec-driver-wrap">
+                    <article id="select-driver1" class="sec-driver"></article>
+                    <article id="select-driver2" class="sec-driver"></article>
+                    <article id="select-driver3" class="sec-driver"></article>
             </section>
         </main>
         <footer>
             
         </footer>
     </body>
-
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="firebase.js"></script>
     <script src="scripts.js"></script>
 </html>

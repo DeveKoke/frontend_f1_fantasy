@@ -1,6 +1,25 @@
+:root{
+    --main-black-color: rgba(33, 31, 31, 0.97);
+    --main-black-color2: rgb(49, 46, 46);
+    --main-black-color3: rgb(70, 66, 66);
+    --main-red-color:  rgb(203, 25, 25);
+}
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 
-input{
-    margin-bottom: .7em;
+/*    *LABELS  ------------------------------------ */
+h2, h4{
+    margin: 5px 0;
+}
+h4{
+    font-weight: 100;
+    font-size: 18px;
+}
+header{
+    background-color: white;
+    padding: 0 3%;
+
 }
 nav {
     display: flex;
@@ -10,22 +29,64 @@ nav {
 }
 a{
     text-decoration: none;
+    color: var(--main-red-color);
+    font-weight: 800;
 }
 li{
 margin: 0 3%;
 width: auto;
 }
+label, .p-login{
+    font-size: 1.3em;
+    margin-bottom: 8px;
+}
+input{
+    margin-bottom: .7em;
+}
+input[type=text], input[type=password], input[type=email] {
+    width: 75%;
+    margin-bottom: 1em;
+    font-size: 1.3em;
+    border-radius: 7px;
+    padding-left: 2%;
+}
+.body-index, .body-home{
+    background-image: url('assets/IMG_0209.jpg') ;
+    background-size: 126%;
+}
+.body-home{
+    margin: 0;
+}
+.main{
+    background-color: var(--main-black-color2);
+}
+
+
+
+
+ /*   * NAV BAR MENU  ------------------------------- */
+#nav_superior{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+     height: 4.3em;
+}
 #menu{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    border-top: none 2px var(--main-red-color);
+    opacity: 0;
+    transition: opacity 2s ease;
 }
-
-#nav_superior{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+#menu.active {
+    display: block;
+    opacity: 1;
+  }
+#menu_icon {
+    cursor: pointer;
+    width: 2.6em;
 }
 .menu_ul {
     display: none;
@@ -34,24 +95,122 @@ width: auto;
     list-style: none;
     padding: 0;
     width: 100%;
-  }
-  
-#menu_icon {
-    cursor: pointer;
-    width: 2.6em;
-  }
-  
+}
 
 
+  
+
+/*    *FORMULARIOS LOGIN Y SIGNUP  ----------------------   */
 #logIn_form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2em 0;
+    margin-top: 4em;
+    padding: 2.3em 0;
+    background-color: var(--main-black-color);
+    color: white;
+    border-radius: 7px;
 }
 #signUp_form{
     display: none;
     flex-direction: column;
     align-items: center;
-    margin: 2em 0;  
+    margin-top: 4em; 
+    padding: 2.3em 0;
+    background-color: var(--main-black-color);
+    color: white;
+    border-radius: 7px;
+}
+#signupFreeButton, input[type=submit]{
+    height: 2.3em;
+    margin: 0 2%;
+    padding: 0 5%;
+    border-radius: 7px;
+    font-weight: 300;
+    font-size: 1em;
+    color: white;
+    background-color: var(--main-red-color);
+    transition: background-color .7s ease;
+}
+  input[type=submit]:hover, #signupFreeButton:hover{
+    border: solid var(--main-red-color) 5px;
+    color: var(--main-red-color);
+    border-radius: 7px;
+    font-weight: bold;
+    box-shadow: 0 0px 13px 3px rgb(86, 84, 84);
+    animation: hoverEffect .6s forwards;
+}
+@keyframes hoverEffect {
+    from {
+      background-color: var(--main-red-color); }
+    to {
+      background-color: white; }
+  }
+
+
+/* *  NEXT RACE MENU  --------------------------------------  */
+.head-race{
+    background-color: var(--main-black-color2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+}
+.next-race{
+    display: flex;
+    background-color: var(--main-black-color3);
+    border-radius: 7px;
+    padding: .5em ;
+    margin: 5% 0;
+}
+
+
+/* *  CAROUSEL  CARDS  ------------------------------------- */
+#carousel-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.car-but-wrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 95%;
+}
+.carousel-buttons, #logOutButton{
+    height: 3em;
+    margin: 0 2%;
+    padding: 0 5%;
+    border-radius: 7px;
+    font-weight: 300;
+    font-size: 1em;
+}
+#logOutButton{
+    padding: 0 9px;
+}
+#btn-left, #btn-right{
+    width: 15%;
+    font-weight: bold;
+    padding: 0;
+}
+
+
+/* * SELECTED DRIVERS  -------------------------------------  */
+.sec-driver-wrap{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 1.5em 0;
+}
+.sec-driver{
+    width: 80%;
+    border-radius: 7px;
+    height: 4.5em;
+    background-color: var(--main-black-color2);
+    border-bottom: solid white 2px;
+    border-right: solid white 2px;
+    margin: .3em 0;
+    /* box-shadow: 0 0px 13px 3px rgb(86, 84, 84); */
 }

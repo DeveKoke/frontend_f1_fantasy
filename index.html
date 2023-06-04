@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles.css">
 </head>
-    <body>
+    <body class="body-index">
         <header>
             <!--para versión móvil introducir burguer con nav escondida desde el DOM-->
             <!-- <nav>
@@ -28,7 +28,7 @@
                 <label for="login-userEmail">User email: </label> <input type="email" id="login-userEmail" name="login_userEmail" placeholder="Your user email">
                 <label for="login-pass">Password: </label><input type="password" id="login-pass" name="password" placeholder="You password">
                 <input type="submit" value="Log in">
-                <p>Don't have an account yet? </p>
+                <p class="p-login">Don't have an account yet? </p>
                 <button id="signupFreeButton">Sign up for free!</button> 
             </form>
 
@@ -41,5 +41,5 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
-    <script src="scripts.js"></script>
+    <script src="firebase.js"></script>
 </html>

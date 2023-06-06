@@ -18,9 +18,6 @@ if (menuUl.style.display === 'none') {
   menu.style.borderTop = 'solid';
   menu.style.borderTopColor = 'rgb(203, 25, 25)';
 } else {
-  // setTimeout(function() {
-  //   menu.style.opacity = '1';
-  // }, 2000);
   menuUl.style.display = 'none';
   menu.style.borderTop = 'none';
 }
@@ -43,43 +40,45 @@ menuUl.innerHTML= menuItems;
 
 // * FUNCIÓN PARA ACCEDER A API Y PINTAR TARGETA PILOTO    -------------------------
 var arrIndex = 0;
-const driversList = ["vers","per","lec","sai","lew","russ","alo","stro","oco","gas","nor","pia","bot","zho","tsu","vri","hul","mag","alb","sar"];
+const driversList = ["vers","per","lec","sai"]
+// ,"lew","russ","alo","stro","oco","gas","nor","pia","bot","zho","tsu","vri","hul","mag","alb","sar"];
 
 async function getDriverInfoCard(driverId) {
-  try{
-      await fetch(`https://v1.formula-1.api-sports.io/drivers?search=${driverId}`, {
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "api-formula-1.p.rapidapi.com",
-          "x-rapidapi-key": "8cd55f4fc36d00125765355eaf63e045"
+  try{       
+        await fetch(`https://v1.formula-1.api-sports.io/drivers?search=${driverId}`, {
+          "method": "GET",
+          "headers": {
+            "x-rapidapi-host": "api-formula-1.p.rapidapi.com",
+            "x-rapidapi-key": "8cd55f4fc36d00125765355eaf63e045"
+          }
+        })
+      .then(response => response.json())
+      .then(
+        data => {
+          let driverName = data.response[0].name;
+          let driverImg = data.response[0].image;
+          let driverNumber = data.response[0].number;
+          let driverCountry= data.response[0].country.name;
+          let driverChamps = data.response[0].world_championships;
+          let driverRaces = data.response[0].grands_prix_entered;
+          let driverVic = data.response[0].highest_race_finish.number;
+          let driverPodiums = data.response[0].podiums;
+          let driverPoints = data.response[0].career_points;
+          let cardContainer = document.querySelector('#card-container');
+          let carouselCards = document.createElement('article');
+          let driverCard = ` <h2>${driverName}</h2>
+                            <img src="${driverImg}" alt="piloto ${driverName}">
+                            <p>Number: ${driverNumber}</p>
+                            <p>Country: ${driverCountry}</p>
+                            <p>World Championships: ${driverChamps}</p>
+                            <p>Races: ${driverRaces}</p>
+                            <p>Victories: ${driverVic}</p>
+                            <p>Podiums: ${driverPodiums}</p>
+                            <p>Carrer Points: ${driverPoints}</p>`
+          carouselCards.innerHTML = driverCard;
+          cardContainer.appendChild(carouselCards);
         }
-      })
-      .then(response => {
-        let data = response.json();
-        let driverName = data.response.name;
-        let driverImg = data.response.image;
-        let driverNumber = data.response.number;
-        let driverCountry= data.response.country.name;
-        let driverChamps = data.response.world_championships;
-        let driverRaces = data.response.grands_prix_entered;
-        let driverVic = data.response.highest_race_finish.number;
-        let driverPodiums = data.response.podiums;
-        let driverPoints = data.response.career_points;
-        cardContainer = document.querySelector('#carousel-wrapper');
-        carouselCards = document.createElement('article');
-        let driverCard = ` <h2>${driverName}</h2>
-        <img src="${driverImg}" alt="piloto ${driverName}">
-        <p>Number: ${driverNumber}</p>
-        <p>Country: ${driverCountry}</p>
-        <p>World Championships: ${driverChamps}</p>
-        <p>Races: ${driverRaces}</p>
-        <p>Victories: ${driverVic}</p>
-        <p>Podiums: ${driverPodiums}</p>
-        <p>Carrer Points: ${driverPoints}</p>`
-        carouselCards.innerHTML = driverCard;
-        cardContainer.appendChild(carouselCards);
-        
-      })
+      )
       .catch(err => {
         console.log(err);
       });
@@ -94,7 +93,7 @@ const btnRight = document.getElementById("btn-right");
 
 function getDriverApiRight() {
   arrIndex ++;
-  if (arrIndex > 19) {
+  if (arrIndex > 3) {
     arrIndex = 0; 
   }
   let driverName = driversList[arrIndex]
@@ -104,7 +103,7 @@ function getDriverApiRight() {
 function getDriverApiLeft() {
   arrIndex --;
   if (arrIndex < 0) {
-    arrIndex = 19;
+    arrIndex = 3;
   }
   let driverName = driversList[arrIndex]
   console.log(driverName);

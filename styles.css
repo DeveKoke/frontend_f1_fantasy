@@ -50,7 +50,7 @@ input[type=text], input[type=password], input[type=email] {
     border-radius: 7px;
     padding-left: 2%;
 }
-.body-index, .body-home{
+.body-index{
     background-image: url('assets/IMG_0209.jpg') ;
     background-size: 126%;
 }
@@ -166,6 +166,14 @@ input[type=text], input[type=password], input[type=email] {
 
 
 /* *  CAROUSEL  CARDS  ------------------------------------- */
+.cards-container{
+    display: flex;
+    color: white;
+    background-color: var(--main-black-color3);
+    border-radius: 7px;
+    width: 90%;
+    margin-bottom: 1.5em;
+}
 #carousel-wrapper{
     display: flex;
     flex-direction: column;
@@ -178,7 +186,7 @@ input[type=text], input[type=password], input[type=email] {
     justify-content: center;
     width: 95%;
 }
-.carousel-buttons, #logOutButton{
+.btn-select, #logOutButton{
     height: 3em;
     margin: 0 2%;
     padding: 0 5%;
@@ -186,13 +194,23 @@ input[type=text], input[type=password], input[type=email] {
     font-weight: 300;
     font-size: 1em;
 }
+.btn-select:hover, #logOutButton:hover, .btn-delete{
+    cursor: pointer;
+}
 #logOutButton{
     padding: 0 9px;
 }
 #btn-left, #btn-right{
-    width: 15%;
-    font-weight: bold;
-    padding: 0;
+    width: 45px;
+    margin: 0 5%; 
+}
+#btn-left:hover, #btn-right:hover{
+    cursor: pointer;
+}
+.btn-delete{
+    margin: 2% 0 4%;
+    height: 2.5em;
+    border-radius: 7px;
 }
 
 

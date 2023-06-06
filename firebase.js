@@ -35,7 +35,7 @@ signUpButton.addEventListener('click', (event)=>{
 
 //* CREAR DOCUMENTO DE COLECCION USERS EN FIRESTORE
 const createUser = (user)=>{
-    let userName = document.getElementById('signup-username').value;
+    // let userName = document.getElementById('signup-username').value;
   // event.preventDefault();
   console.log(user);
   db.collection("users")
@@ -71,14 +71,17 @@ signUpForm.addEventListener('submit', async (e) => {
       .then((userCredential) => {
           console.log('User registered');
           const user = userCredential.user;
+          console.log(user);
           signUpForm.reset();
           // Guarda El usuario en Firestore
           createUser({                  
-            user_name: userName,
-            email: userEmail,
+            email: user.email,
+            user_name: userName
             });
-          window.location.href = 'home.html';    //? Cambiar de documento HTML al registrarse.
-      })
+          })
+          .then (() => {
+            window.location.href = "home.html";
+          }); //? Cambiar de documento HTML al registrarse.
   }catch (error) {
     console.log(`There has been an error with code: ${error.code}: ${error.message}`)
   } 

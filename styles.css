@@ -1,14 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,500&display=swap');
+
 :root{
     --main-black-color: rgba(33, 31, 31, 0.97);
     --main-black-color2: rgb(49, 46, 46);
     --main-black-color3: rgb(93, 85, 85);
     --main-red-color:  rgb(203, 25, 25);
+    --main-red-color2: rgb(208, 25, 25);
 }
 *{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 /*    *LABELS  ------------------------------------ */
+h1{
+    margin: 2.5% 0 0;
+    font-size: 4em;
+    font-family: Rubik;
+    font-weight: 800;
+}
 h2, h4{
     margin: 5px 0;
 }
@@ -65,7 +74,8 @@ input[type=text], input[type=password], input[type=email] {
 }
 .main-index{
 display: flex;
-justify-content: center;
+flex-direction: column;
+align-items: center;
 }
 
 
@@ -127,12 +137,29 @@ justify-content: center;
   
 
 /*    *FORMULARIOS LOGIN Y SIGNUP  ----------------------   */
+.wel-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 3.2em;
+    width: 96%;
+    border-radius: 7px;
+    color: var(--main-red-color2);
+    font-style: italic;
+    background-color: var(--main-black-color);
+}
+#logo{
+    width: 28%;
+    margin-right: -2.2%;
+    margin-bottom: 2%;
+}
 #logIn_form{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 96%;
-    margin: 4em 0 0;
+    margin-top: 3em;
     padding: 2.3em 0;
     background-color: var(--main-black-color);
     color: white;
@@ -143,7 +170,7 @@ justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 95%;
-    margin-top: 4em; 
+    margin-top: 3em; 
     padding: 2.3em 0;
     background-color: var(--main-black-color);
     color: white;
@@ -199,9 +226,9 @@ justify-content: center;
 .drivers-list{
     padding: 10px 15px;
     color: white;
+    margin: 0 3%;
 }
 .carousel-wrapper{
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -261,6 +288,10 @@ justify-content: center;
 
 
 /* * ACORDEON ----------------------------------------------------  */
+#btn-selectDriver{
+    margin: 0 auto;
+    width: 55%;
+}
   #accordion {
     margin: .5em auto;
     width: 90%;
@@ -269,16 +300,19 @@ justify-content: center;
     justify-content: flex-start;
     flex-direction: column;
   }
+  .accordion__item.open .toggleInfoClass {
+    display: block;
+  }
   .accordion__item.open {
     flex-grow: 3;
   }  
   .accordion__item { 
     flex-basis: 7%;
     height: 100%;
-    margin-bottom: 1em;
+    margin-top: 1.5em;
     border-radius: 7px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-family: helvetica;
     background-color: var(--main-black-color3);
@@ -287,12 +321,42 @@ justify-content: center;
     border-right: solid white;
     border-bottom: solid white;
     transition: 
-      flex-grow .3s linear,
+      flex-grow .4s linear,
       background-color .2s ease
   }
   .accordion__item:active { 
     box-shadow: 1px 1px .1em #67adb5;
     background-color: var(--main-black-color3);
     color: white;
-  } 
+  }
+  .driver-FP{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .driverImg{
+    width: 25%;
+  }
+  .driver-label{
+    margin-left: 5%;
+  }
+  .hidden{
+    display: none;
+  }
+  .driverInfoBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .toggleInfoClass{
+    font-size: 1.5em;
+  }
+  /* input[type=checkbox]{
+    width: 15px;
+  }
+  input[type=checkbox]:checked{
+    background-color: var(--main-red-color);
+  } */
+
   

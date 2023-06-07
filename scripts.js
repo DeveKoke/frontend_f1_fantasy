@@ -19,7 +19,6 @@ const user = auth.currentUser;  //Initialize FireAuth
 // const app = initializeApp(firebaseConfig);   // Initialize Firebase
 // const db = getFirestore(app);   //Initialize DDBB
 //*----------------------------------------------------------------------------------------------
-
 let signUpForm = document.getElementById("signUp_form");
 let logInForm = document.getElementById("logIn_form");
 const emailRegex = /^[\w\._]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -96,7 +95,7 @@ signUpForm.addEventListener('submit', async (e) => {
 }
 
 
-//* Log in function -----------------------------
+//* Log in function -------------------------------------------------------------
 if(logInForm){
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -130,7 +129,7 @@ logInForm.addEventListener("submit", async (e) => {
 }
 
 
-//* Crear identificador usuario en nav
+//* Crear identificador usuario en nav    ---------------------------------------
 const userName = document.getElementById('userBar');
 let state = auth.onAuthStateChanged(user => {
 if(user){
@@ -159,7 +158,7 @@ if(user){
 
 
 
-//* LOGOUT function.
+//* LOGOUT function.    -----------------------------------------------------------
 const logOutButton = document.getElementById("logOutButton");
 if(logOutButton){
 logOutButton.addEventListener('click', function (){
@@ -206,14 +205,14 @@ if(menuIcon){
 
 //* FUNCIÓN LLAMADA A LA API
 var arrIndex = 0;
-const driversList = ["vers","per"] 
-// ,"lec" ,"sai","lew","russ","alo","stro","nor","pia"];
+const driversList = ["vers", "per"];
+// "per","lec" ,"sai","lew","russ","alo","stro","nor","pia"];
 let driversInfo = [];
 let driver_card = document.getElementById('driver-card');
 
 async function getDriverInfoCard(driverId) {
   try {       
-    const response = await fetch(`OOhttps://v1.formula-1.api-sports.io/drivers?search=${driverId}`, {
+    const response = await fetch(`https://v1.formula-1.api-sports.io/drivers?search=${driverId}`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "api-formula-1.p.rapidapi.com",
@@ -230,7 +229,23 @@ async function getDriverInfoCard(driverId) {
 }
 
 
-//* FUNCIÓN PARA PINTAR MINITARJETA
+  //* EVENTO DE CLICK ACORDEON
+  function accordionClickEvent() {
+    const accordionItems = document.querySelectorAll('.accordion__item');
+    accordionItems.forEach((accordionItem) => {
+      accordionItem.addEventListener('click', () => {
+        accordionItems.forEach((item) => {
+          if (item !== accordionItem) {
+            item.classList.remove('open');
+          }
+        });
+        accordionItem.classList.toggle('open');
+      });
+    });
+  }
+
+
+//* FUNCIÓN PARA PINTAR TARJETAS DE PILOTOS   ---------------------------------------------------
 async function create_MiniCard() {
   for (let i = 0; i < driversList.length; i++) {
     const driverId = driversList[i];
@@ -242,43 +257,52 @@ async function create_MiniCard() {
     const driverInfo = driversInfo[i];
     const driverName = driverInfo.response[0].name;
     const driverImg = driverInfo.response[0].image;
+    const driverNumber = driverInfo.response[0].number;
+    const driverCountry = driverInfo.response[0].country.name;
+    const driverChamps = driverInfo.response[0].world_championships;
+    const driverRaces = driverInfo.response[0].grands_prix_entered;
+    const driverVic = driverInfo.response[0].highest_race_finish.number;
+    const driverPodiums = driverInfo.response[0].podiums;
+    const driverPoints = driverInfo.response[0].career_points;
 
     let driver_MiniCard = `
-    <label class='accordion__item'>
-        <input type="check" name="driver_checked">
-        <h2>${driverName}</h2>
-        <div id="driver-FP">
-            <img src="${driverImg}" alt="piloto ${driverName}">
-        </div>
-    </label>
-    `;
+              <article class='accordion__item'>
+                  <label class="driver-label">
+                        <input type="checkbox" name="${driverName} " class="myCheck">
+                  </label>
+                  <div class="driverInfoBlock" id="driverInfoBlock">
+                      <div class="driver-FP">
+                            <h2>${driverName}</h2>
+                            <img src="${driverImg}" alt="piloto ${driverName}" id="driverImg" class="driverImg">
+                      </div>
+                      <div id="toggleInfoBlock" class="toggleInfoClass hidden">
+                            <p>Number: ${driverNumber}</p>
+                            <p>Country: ${driverCountry}</p>
+                            <p>World Championships: ${driverChamps}</p>
+                            <p>Races: ${driverRaces}</p>
+                            <p>Victories: ${driverVic}</p>
+                            <p>Podiums: ${driverPodiums}</p>
+                            <p>Career Points: ${driverPoints}</p>
+                      </div>
+                  <div>      
+              </article>`;
     accordion.innerHTML += driver_MiniCard;
   }
+  // Ocultar el bloque de información del piloto al cargar página
+  const toggleInfoBlocks = document.querySelectorAll('.toggleInfoClass');
+  toggleInfoBlocks.forEach((toggleInfoBlock) => {
+    toggleInfoBlock.classList.add('hidden');
+  });
+  accordionClickEvent();
+  const driverImg = accordionItem.querySelector('.driverImg');
+      if (accordionItem.classList.contains('open')) {
+        driverImg.style.width = '45%';
+      } else {
+        driverImg.style.width = '25%';
+      }
 }
 create_MiniCard()
 
-
-
-//* FUNCIÓN ACORDEON
-var accordionItems = document.querySelectorAll('.accordion__item');
-
-accordionItems.forEach(function(item) {
-  item.addEventListener('click', function() {
-    // Verificar si el elemento está abierto
-    var isOpen = this.classList.contains('open');
-
-    // Si el elemento está abierto, cerrarlo
-    if (isOpen) {
-      this.classList.remove('open');
-    } else {
-      // Si el elemento está cerrado, cerrar todos los demás y abrir este
-      accordionItems.forEach(function(item) {
-        item.classList.remove('open');
-      });
-      this.classList.add('open');
-    }
-  });
-});
 
 
 
@@ -296,30 +320,30 @@ accordionItems.forEach(function(item) {
 //   console.log(driversInfo);
 //   // Puedes hacer más operaciones con los datos de los conductores aquí
 //   for (let i = 0; i < driversInfo.length; i++) {
-//     const driverInfo = driversInfo[i];
-//     const driverName = driverInfo.response[0].name;
-//     const driverImg = driverInfo.response[0].image;
-//     const driverNumber = driverInfo.response[0].number;
-//     const driverCountry = driverInfo.response[0].country.name;
-//     const driverChamps = driverInfo.response[0].world_championships;
-//     const driverRaces = driverInfo.response[0].grands_prix_entered;
-//     const driverVic = driverInfo.response[0].highest_race_finish.number;
-//     const driverPodiums = driverInfo.response[0].podiums;
-//     const driverPoints = driverInfo.response[0].areer_points;
+    // const driverInfo = driversInfo[i];
+    // const driverName = driverInfo.response[0].name;
+    // const driverImg = driverInfo.response[0].image;
+    // const driverNumber = driverInfo.response[0].number;
+    // const driverCountry = driverInfo.response[0].country.name;
+    // const driverChamps = driverInfo.response[0].world_championships;
+    // const driverRaces = driverInfo.response[0].grands_prix_entered;
+    // const driverVic = driverInfo.response[0].highest_race_finish.number;
+    // const driverPodiums = driverInfo.response[0].podiums;
+    // const driverPoints = driverInfo.response[0].areer_points;
 
 //     console.log(driverName, driverNumber, driverRaces);
 //     let driverCard = `
 //       <h2>${driverName}</h2>
 //       <div id="driver-FP">
 //         <img src="${driverImg}" alt="piloto ${driverName}">
-//         <p>Number: ${driverNumber}</p>
+        // <p>Number: ${driverNumber}</p>
 //       </div>
-//       <p>Country: ${driverCountry}</p>
-//       <p>World Championships: ${driverChamps}</p>
-//       <p>Races: ${driverRaces}</p>
-//       <p>Victories: ${driverVic}</p>
-//       <p>Podiums: ${driverPodiums}</p>
-//       <p>Career Points: ${driverPoints}</p>
+      // <p>Country: ${driverCountry}</p>
+      // <p>World Championships: ${driverChamps}</p>
+      // <p>Races: ${driverRaces}</p>
+      // <p>Victories: ${driverVic}</p>
+      // <p>Podiums: ${driverPodiums}</p>
+      // <p>Career Points: ${driverPoints}</p>
 //     `;
 
 //     carouselCards.innerHTML = driverCard;

@@ -1,7 +1,7 @@
 :root{
     --main-black-color: rgba(33, 31, 31, 0.97);
     --main-black-color2: rgb(49, 46, 46);
-    --main-black-color3: rgb(70, 66, 66);
+    --main-black-color3: rgb(93, 85, 85);
     --main-red-color:  rgb(203, 25, 25);
 }
 *{
@@ -15,6 +15,9 @@ h2, h4{
 h4{
     font-weight: 100;
     font-size: 18px;
+}
+body{
+    margin: 0;
 }
 header{
     background-color: white;
@@ -57,8 +60,12 @@ input[type=text], input[type=password], input[type=email] {
 .body-home{
     margin: 0;
 }
-.main{
+.main-home{
     background-color: var(--main-black-color2);
+}
+.main-index{
+display: flex;
+justify-content: center;
 }
 
 
@@ -96,6 +103,25 @@ input[type=text], input[type=password], input[type=email] {
     padding: 0;
     width: 100%;
 }
+.userNav{
+    display: flex;
+    flex-direction: row;
+}
+.userNameNav{
+    font-size: 1.4em;
+    font-weight: bolder;
+    background-color: var(--main-black-color2);
+    color: white;
+    border-radius: 7px;
+    margin: 2px 0;
+    padding: 5px 10px 8px;
+}
+#userImg{
+    width: 25%;
+    height: 25%;
+    margin-right: 5%;
+    padding-top: 1%;
+}
 
 
   
@@ -105,7 +131,8 @@ input[type=text], input[type=password], input[type=email] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 4em;
+    width: 96%;
+    margin: 4em 0 0;
     padding: 2.3em 0;
     background-color: var(--main-black-color);
     color: white;
@@ -115,6 +142,7 @@ input[type=text], input[type=password], input[type=email] {
     display: none;
     flex-direction: column;
     align-items: center;
+    width: 95%;
     margin-top: 4em; 
     padding: 2.3em 0;
     background-color: var(--main-black-color);
@@ -132,7 +160,7 @@ input[type=text], input[type=password], input[type=email] {
     background-color: var(--main-red-color);
     transition: background-color .7s ease;
 }
-  input[type=submit]:hover, #signupFreeButton:hover{
+  input[type=submit]:hover, #signupFreeButton:hover, #logOutButton:hover{
     border: solid var(--main-red-color) 5px;
     color: var(--main-red-color);
     border-radius: 7px;
@@ -158,6 +186,8 @@ input[type=text], input[type=password], input[type=email] {
 }
 .next-race{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     background-color: var(--main-black-color3);
     border-radius: 7px;
     padding: .5em ;
@@ -166,15 +196,12 @@ input[type=text], input[type=password], input[type=email] {
 
 
 /* *  CAROUSEL  CARDS  ------------------------------------- */
-.cards-container{
-    display: flex;
+.drivers-list{
+    padding: 10px 15px;
     color: white;
-    background-color: var(--main-black-color3);
-    border-radius: 7px;
-    width: 90%;
-    margin-bottom: 1.5em;
 }
-#carousel-wrapper{
+.carousel-wrapper{
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,6 +213,9 @@ input[type=text], input[type=password], input[type=email] {
     justify-content: center;
     width: 95%;
 }
+#unknown-driver{
+    width: 40%;
+}
 .btn-select, #logOutButton{
     height: 3em;
     margin: 0 2%;
@@ -193,19 +223,15 @@ input[type=text], input[type=password], input[type=email] {
     border-radius: 7px;
     font-weight: 300;
     font-size: 1em;
+    color: white;
+    background-color: var(--main-red-color);
+    transition: background-color .7s ease;
 }
 .btn-select:hover, #logOutButton:hover, .btn-delete{
     cursor: pointer;
 }
 #logOutButton{
     padding: 0 9px;
-}
-#btn-left, #btn-right{
-    width: 45px;
-    margin: 0 5%; 
-}
-#btn-left:hover, #btn-right:hover{
-    cursor: pointer;
 }
 .btn-delete{
     margin: 2% 0 4%;
@@ -225,10 +251,48 @@ input[type=text], input[type=password], input[type=email] {
 .sec-driver{
     width: 80%;
     border-radius: 7px;
-    height: 4.5em;
+    height: 11em;
     background-color: var(--main-black-color2);
     border-bottom: solid white 2px;
     border-right: solid white 2px;
     margin: .3em 0;
     /* box-shadow: 0 0px 13px 3px rgb(86, 84, 84); */
 }
+
+
+/* * ACORDEON ----------------------------------------------------  */
+  #accordion {
+    margin: .5em auto;
+    width: 90%;
+    height: 168vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .accordion__item.open {
+    flex-grow: 3;
+  }  
+  .accordion__item { 
+    flex-basis: 7%;
+    height: 100%;
+    margin-bottom: 1em;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: helvetica;
+    background-color: var(--main-black-color3);
+    cursor: pointer;
+    color: white;
+    border-right: solid white;
+    border-bottom: solid white;
+    transition: 
+      flex-grow .3s linear,
+      background-color .2s ease
+  }
+  .accordion__item:active { 
+    box-shadow: 1px 1px .1em #67adb5;
+    background-color: var(--main-black-color3);
+    color: white;
+  } 
+  

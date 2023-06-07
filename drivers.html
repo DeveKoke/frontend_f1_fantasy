@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title> F1 Fantasy - Home </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <body class="body-home">
+        <header id="headerHome">
+            <nav>
+                <div id="nav_superior">
+                    <div  id="userBar">
+                        <h4>HOLA USUARIO</h4>
+                        <!-- meter nombre e img de usuario -->
+                    </div>
+                    <img src="assets/menu.png" alt="menu" id="menu_icon">
+
+                    <button id="logOutButton">Log out</button> 
+                </div>
+                <div id="menu">
+                    <ul class="menu_ul">
+                        <!-- meter ancors desde el dom al presionar menu_icon -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="drivers-list">
+                <h1>DRIVERS</h1>
+                <P>Select the drivers you want for your team for next grand prix.</P>
+            </section>
+            <div id='accordion'>
+            <!-- insertar minitarjetas desde el DOM -->
+            </div>
+        </main>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+        <script src="scripts.js"></script>
+
+    </body>
+</html>

@@ -37,16 +37,20 @@ signUpButton.addEventListener('click', (event)=>{
 }
 
 
-//* CREAR DOCUMENTO DE COLECCION USERS EN FIRESTORE
+//* CREAR DOCUMENTO DE COLECCION USERS EN FIRESTORE    ------------------------------
 const createUser = (user)=>{
-// let userName = document.getElementById('signup-username').value;
-// event.preventDefault();
 console.log(user);
 db.collection("users")
 .add(user)
 .then((docRef) => console.log("Document written with ID: ", docRef.id))  //* => meter identificador random = docRef
 .catch((error) => console.error("Error adding document: ", error));
 };
+// const createGameCollection = (drivers)=> {
+//   db.collection("drivers")
+//   .add(drivers)
+//   .then((docRef) => console.log("Game created", docRef.id))
+//   .catch((error) => console.error("Error adding document: ", error));
+// }
 
 
 //*Sign up function y creación de documento de usuario en FIRESTORE  ----------------
@@ -158,7 +162,7 @@ if(user){
 
 
 
-//* LOGOUT function.    -----------------------------------------------------------
+//* LogOut function.    -----------------------------------------------------------
 const logOutButton = document.getElementById("logOutButton");
 if(logOutButton){
 logOutButton.addEventListener('click', function (){
@@ -177,7 +181,6 @@ const menu = document.getElementById('menu')
 const menuIcon = document.getElementById('menu_icon')
 const menuUl = document.createElement('ul'); 
 menuUl.setAttribute('class','menu_ul');
-
 if(menuIcon){
   menuIcon.addEventListener('click', () => {
     const menuItems = `
@@ -203,10 +206,10 @@ if(menuIcon){
 }
 
 
-//* FUNCIÓN LLAMADA A LA API
+//* FUNCIÓN LLAMADA A LA API     -------------------------------------------------------------------------
 var arrIndex = 0;
 const driversList = ["vers", "per"];
-// "per","lec" ,"sai","lew","russ","alo","stro","nor","pia"];
+// ,"per","lec" ,"sai","lew","russ","alo","stro","nor","pia"];
 let driversInfo = [];
 let driver_card = document.getElementById('driver-card');
 
@@ -229,7 +232,7 @@ async function getDriverInfoCard(driverId) {
 }
 
 
-  //* EVENTO DE CLICK ACORDEON
+  //* EVENTO DE CLICK ACORDEON DRIVERS    --------------------------------------------------------
   function accordionClickEvent() {
     const accordionItems = document.querySelectorAll('.accordion__item');
     accordionItems.forEach((accordionItem) => {
@@ -253,7 +256,7 @@ async function create_MiniCard() {
     driversInfo.push(driverInfo);
   }
   for (let i = 0; i < driversInfo.length; i++) {
-    const accordion = document.getElementById('accordion');
+    const accordion = document.getElementById('accordionForm');
     const driverInfo = driversInfo[i];
     const driverName = driverInfo.response[0].name;
     const driverImg = driverInfo.response[0].image;
@@ -268,7 +271,7 @@ async function create_MiniCard() {
     let driver_MiniCard = `
               <article class='accordion__item'>
                   <label class="driver-label">
-                        <input type="checkbox" name="${driverName} " class="myCheck">
+                        <input type="checkbox" name="driver_${driverName} " class="myCheck">
                   </label>
                   <div class="driverInfoBlock" id="driverInfoBlock">
                       <div class="driver-FP">
@@ -294,68 +297,80 @@ async function create_MiniCard() {
     toggleInfoBlock.classList.add('hidden');
   });
   accordionClickEvent();
-  const driverImg = accordionItem.querySelector('.driverImg');
-      if (accordionItem.classList.contains('open')) {
-        driverImg.style.width = '45%';
-      } else {
-        driverImg.style.width = '25%';
-      }
 }
 create_MiniCard()
 
 
 
+//*  FORMULARIO PARA RECOGER LOS PILOTOS SELECCIONADOS POR USUARIO Y METERLOS EN FIRESTORE   ---------------------------------------
+const driversSelectedForm = document.getElementById('accordionForm');
+const btn_selectDriver = document.getElementById('btn-selectDriver')
 
-// //* FUNCIÓN PARA PINTAR TARJETA COMPLETA
+if(btn_selectDriver){
+  driversSelectedForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita el envío del formulario por defecto
 
-// //todo añadir addEventListener cuando se hace clicky se muestre esta función
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const driversArr = [];
+    const driversPageHead = document.getElementById('driversPageHead');
 
-// async function fetchDriverInfo() {
-//   for (let i = 0; i < driversList.length; i++) {
-//     const driverId = driversList[i];
-//     const driverInfo = await getDriverInfoCard(driverId);
-//     driversInfo.push(driverInfo);
-//   }
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        driversArr.push(checkbox.name);
+      }
+    });
+
+    if(driversArr.length !== 3) {
+        const selectErrorMessage = document.createElement('p');
+        selectErrorMessage.classList.add('selectErrorMessage');
+        selectErrorMessage.textContent = 'Remember, you have to select three drivers!';
+        driversPageHead.appendChild(selectErrorMessage);
+    }
   
-//   console.log(driversInfo);
-//   // Puedes hacer más operaciones con los datos de los conductores aquí
-//   for (let i = 0; i < driversInfo.length; i++) {
-    // const driverInfo = driversInfo[i];
-    // const driverName = driverInfo.response[0].name;
-    // const driverImg = driverInfo.response[0].image;
-    // const driverNumber = driverInfo.response[0].number;
-    // const driverCountry = driverInfo.response[0].country.name;
-    // const driverChamps = driverInfo.response[0].world_championships;
-    // const driverRaces = driverInfo.response[0].grands_prix_entered;
-    // const driverVic = driverInfo.response[0].highest_race_finish.number;
-    // const driverPodiums = driverInfo.response[0].podiums;
-    // const driverPoints = driverInfo.response[0].areer_points;
+    const driversObjetc = {driver1: "", driver2: "", driver: ""};
+  
+    driversArr.forEach((driver, index) => {  // meter los checkbox seleccionados dentro del objeto
+      const driverIndex = index + 1;
+      const driverKey = `driver${driverIndex}`;
+      driversObjetc[driverKey] = driver;
+    });
 
-//     console.log(driverName, driverNumber, driverRaces);
-//     let driverCard = `
-//       <h2>${driverName}</h2>
-//       <div id="driver-FP">
-//         <img src="${driverImg}" alt="piloto ${driverName}">
-        // <p>Number: ${driverNumber}</p>
-//       </div>
-      // <p>Country: ${driverCountry}</p>
-      // <p>World Championships: ${driverChamps}</p>
-      // <p>Races: ${driverRaces}</p>
-      // <p>Victories: ${driverVic}</p>
-      // <p>Podiums: ${driverPodiums}</p>
-      // <p>Career Points: ${driverPoints}</p>
-//     `;
-
-//     carouselCards.innerHTML = driverCard;
-//     cardContainer.appendChild(carouselCards);
-//   }
-// }
-
-// fetchDriverInfo();
+    auth.onAuthStateChanged(function(user) {
+      const driverDocRef = db.collection('user_games').doc(user.email);
+      driverDocRef.set(driversObjetc)
+        .then(() => {
+          console.log('Documento creado con éxito');
+          // Verificar el usuario después de establecer el documento en Firestore
+          if (auth.currentUser) {
+            console.log('Usuario autenticado:', auth.currentUser);
+          } else {
+            console.log('No se encontró ninguna autenticación de usuario');
+          }
+        })
+        .catch(error => {
+          console.error('Error al crear el documento:', error);
+        });
+      });
+  });
+};
 
 
+function getUserGameDoc() {
+  driverDocRef.get()
+  .then((doc) => {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});  
+}
+const driverDocRef = db.collection('user_games').doc(user.email);
+if (auth.currentUser !== driverDocRef){
 
-
-
-
-
+}else{
+  getUserGameDoc
+}

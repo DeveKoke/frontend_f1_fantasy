@@ -214,6 +214,8 @@ align-items: center;
 .next-race{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    height: 2.3em;
     justify-content: space-around;
     background-color: var(--main-black-color3);
     border-radius: 7px;
@@ -223,12 +225,12 @@ align-items: center;
 
 
 /* *  CAROUSEL  CARDS  ------------------------------------- */
-.drivers-list{
+.driversPageHead{
     padding: 10px 15px;
     color: white;
     margin: 0 3%;
 }
-.carousel-wrapper{
+.yourTeamPageHead{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -241,7 +243,7 @@ align-items: center;
     width: 95%;
 }
 #unknown-driver{
-    width: 40%;
+    width: 181px;
 }
 .btn-select, #logOutButton{
     height: 3em;
@@ -276,6 +278,8 @@ align-items: center;
     padding: 1.5em 0;
 }
 .sec-driver{
+    display: flex;
+    justify-content: center;
     width: 80%;
     border-radius: 7px;
     height: 11em;
@@ -285,17 +289,26 @@ align-items: center;
     margin: .3em 0;
     /* box-shadow: 0 0px 13px 3px rgb(86, 84, 84); */
 }
+.selectErrorMessage{
+    color: var(--main-red-color);
+    background-color: white;
+    border-radius: 7px;
+    border: solid var(--main-red-color) 5px;
+    margin: 0 auto 2%;
+    text-align: center;
+    padding: 2%;
+}
 
 
 /* * ACORDEON ----------------------------------------------------  */
 #btn-selectDriver{
-    margin: 0 auto;
+    margin: 0 auto 3%;
     width: 55%;
 }
-  #accordion {
+  #accordionForm {
     margin: .5em auto;
     width: 90%;
-    height: 168vh;
+    height: 118vh;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -309,7 +322,7 @@ align-items: center;
   .accordion__item { 
     flex-basis: 7%;
     height: 100%;
-    margin-top: 1.5em;
+    margin-top: .6em;
     border-radius: 7px;
     display: flex;
     justify-content: space-between;
@@ -322,7 +335,7 @@ align-items: center;
     border-bottom: solid white;
     transition: 
       flex-grow .4s linear,
-      background-color .2s ease
+      background-color .2s ease 
   }
   .accordion__item:active { 
     box-shadow: 1px 1px .1em #67adb5;
@@ -352,11 +365,7 @@ align-items: center;
   .toggleInfoClass{
     font-size: 1.5em;
   }
-  /* input[type=checkbox]{
-    width: 15px;
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 10px;
   }
-  input[type=checkbox]:checked{
-    background-color: var(--main-red-color);
-  } */
-
-  

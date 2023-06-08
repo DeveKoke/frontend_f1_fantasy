@@ -1,21 +1,16 @@
-// //copiar tarjeta
-// let driverFrontPage = document.getElementById('driver-FP');
-// let selectedDriverCard = document.querySelectorAll('.sec-driver');
-// cardContainer.addEventListener('click', () => {
-//   selectedDriverCard.appendchild driverFrontPage
-// })
 
+// const selectedDrivers = ['Driver1', 'Driver2', 'Driver3'];
+// const driversSelected = { driver1: "", driver2: "", driver3: "" };
 
+// selectedDrivers.forEach((items))
 
-// //* FUNCIÓN PARA EL BOTÓN DELETE DRIVER
-// const btnDelete = document.getElementById('myElement');
-// btnDelete.addEventListener('click', ()=>{
-//   nombreDeElementoAEliminar.remove();
+const driversObjetc = { driver1: "", driver2: "", driver3: "" };
+const driversArr = ['ver', 'per', 'lec'];
 
-// })
+driversArr.forEach((driver, index) => {
+  const driverIndex = index + 1;
+  const driverKey = `driver${driverIndex}`;
+  driversObjetc[driverKey] = driver;
+});
 
-
-
-
-
-
+console.log(driversObjetc);

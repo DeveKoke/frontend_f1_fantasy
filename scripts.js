@@ -45,12 +45,6 @@ db.collection("users")
 .then((docRef) => console.log("Document written with ID: ", docRef.id))  //* => meter identificador random = docRef
 .catch((error) => console.error("Error adding document: ", error));
 };
-// const createGameCollection = (drivers)=> {
-//   db.collection("drivers")
-//   .add(drivers)
-//   .then((docRef) => console.log("Game created", docRef.id))
-//   .catch((error) => console.error("Error adding document: ", error));
-// }
 
 
 //*Sign up function y creación de documento de usuario en FIRESTORE  ----------------
@@ -353,24 +347,3 @@ if(btn_selectDriver){
       });
   });
 };
-
-
-function getUserGameDoc() {
-  driverDocRef.get()
-  .then((doc) => {
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch((error) => {
-    console.log("Error getting document:", error);
-});  
-}
-const driverDocRef = db.collection('user_games').doc(user.email);
-if (auth.currentUser !== driverDocRef){
-
-}else{
-  getUserGameDoc
-}

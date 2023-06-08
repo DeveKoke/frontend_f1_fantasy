@@ -369,3 +369,65 @@ align-items: center;
     transform: scale(1.5);
     margin-right: 10px;
   }
+
+
+  /* * MEDIAQUERIES    -----------------------------------------------------------------*/
+  @media screen and (min-width: 700px){
+        .body-index{
+            background-position-y: 20% ;
+    }
+    .sec-driver {
+        width: 68%;
+    }
+ }
+
+  @media screen and (min-width: 900px){
+    .wel-container, #signUp_form, #logIn_form{
+        width: 75%;
+    }
+    #nav_superior{
+        height: 5.5em;
+    }
+    .head-race{
+        font-size: 1.3em;
+    }
+    .sec-driver {
+        width: 59%;
+    }
+ }
+ 
+  @media screen and (min-width: 1000px){
+    .body-index{
+        background-position-y: 35% ;
+  }
+  input[type=text], input[type=password], input[type=email]{
+    height: 35px;
+    width: 55%;
+  }
+  #signupFreeButton, input[type=submit]{
+    height: 2.5em;
+    font-size: 1.3em;
+  }
+  #logOutButton{
+    font-size: 1.2em;
+    width: 12%;
+  }
+  .userNameNav{
+    font-size: 1.9em;
+  }
+  #userImg{
+    margin-right: 15%;
+    padding: 0;
+    width: 30%;
+  }
+  #menu_icon {
+    width: 4em;
+  }
+  .menu_ul{
+    padding: .2em 0;
+    font-size: larger;
+  }
+  .sec-driver {
+    width: 54%;
+}
+}

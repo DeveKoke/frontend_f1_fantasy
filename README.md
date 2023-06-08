@@ -6,6 +6,10 @@ Esta es una aplicación web creada para los amantes de la Fórmula 1. Permite a 
 
 - Registro y autenticación de usuarios a través de Firebase Auth.
 - Identificación de usuarios mientras están en sesión.
+
+![log in](assets/Captura1.PNG)
+![signup](assets/Captura2.PNG)
+
 - Mostrar información actualizada de los pilotos y estadísticas de la Fórmula 1 obtenida mediante una API externa.
 - Elección de pilotos por parte del usuario y guardar la información en una base de datos Firestore.
 - Acceso a base de datos Firebase para autenticación y almacenamiento de información del juego.
@@ -22,6 +26,9 @@ El repositorio contiene los siguientes archivos y carpetas:
 
 - `index.html`: Página de inicio con las opciones de inicio de sesión y registro.
 - `home.html`: Página principal de la sesión de usuario, donde se muestra el equipo y la puntuación del usuario.
+
+![yourTeam](assets/Captura3.PNG)
+
 - `drivers.html`: Biblioteca de pilotos disponibles para el juego.
 - `style.css`: Archivo CSS para los estilos de la aplicación.
 - `script.js`: Archivo JavaScript con la configuración y funcionalidades de la aplicación.
@@ -32,6 +39,9 @@ El repositorio contiene los siguientes archivos y carpetas:
 - Leer datos de la base de datos para mostrar en `home.html` los pilotos elegidos por usuario en `drivers.html`.
 - Crear `results.html` para mostrar la puntuación del usuario después de cada carrera, incluyendo gráficos y resultados reales de los Grandes Premios.
 - Implementar `league.html` para permitir a los usuarios competir y comparar su puntuación con otros usuarios en una liga.
+
+![menu](assets/Captura4.PNG)
+
 
 ## Tecnologías Utilizadas
 

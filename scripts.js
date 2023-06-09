@@ -202,8 +202,8 @@ if(menuIcon){
 
 //* FUNCIÓN LLAMADA A LA API     -------------------------------------------------------------------------
 var arrIndex = 0;
-const driversList = ["vers", "per"];
-// ,"per","lec" ,"sai","lew","russ","alo","stro","nor","pia"];
+const driversList = ["vers","per","lec" ,"sai","alo","stro","lew","russ"];
+// ,"per","lec" ,"sai", "alo","stro","lew","russ","alo","stro","nor","pia"];
 let driversInfo = [];
 let driver_card = document.getElementById('driver-card');
 
@@ -329,7 +329,7 @@ if(btn_selectDriver){
       driversObjetc[driverKey] = driver;
     });
 
-    auth.onAuthStateChanged(function(user) {
+    auth.onAuthStateChanged(function(user) {     // identificación de usuario y creación de documento con el email como id del documento.
       const driverDocRef = db.collection('user_games').doc(user.email);
       driverDocRef.set(driversObjetc)
         .then(() => {

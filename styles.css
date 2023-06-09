@@ -394,6 +394,19 @@ align-items: center;
     .sec-driver {
         width: 59%;
     }
+    #btn-selectDriver{
+      justify-content: space-around;
+    }
+    .driverImg{
+      margin-left: 20%;
+    }
+    #accordionForm{
+      width: 73%;
+    }
+    .driversPageHead{
+      margin: 0 auto;
+      width: 72%;
+    }
  }
  
   @media screen and (min-width: 1000px){
